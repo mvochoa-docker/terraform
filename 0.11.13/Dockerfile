@@ -1,4 +1,5 @@
 FROM golang:alpine AS builder
+MAINTAINER mario@mvochoa.com
 
 ENV TERRAFORM_VERSION=0.11.13
 
