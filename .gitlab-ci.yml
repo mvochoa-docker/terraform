@@ -1,7 +1,4 @@
-stages:
-  - docker
-
-.docker
+.docker:
   image: docker
   services:
     - docker:stable-dind
@@ -9,7 +6,6 @@ stages:
     DOCKER_HOST: docker:2375
   tags:
     - docker
-
 
 terraform:0.11.13:
   extends: .docker
