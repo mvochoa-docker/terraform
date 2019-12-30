@@ -1,5 +1,4 @@
 FROM golang:alpine AS builder
-MAINTAINER mario@mvochoa.com
 
 ENV TERRAFORM_VERSION=0.11.13
 
@@ -14,6 +13,7 @@ RUN git clone https://github.com/hashicorp/terraform.git ./ && \
     /bin/bash scripts/build.sh
 
 FROM alpine:3.8
+MAINTAINER mario@mvochoa.com
 
 RUN apk add --update --no-cache gettext openssh curl
 
