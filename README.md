@@ -3,7 +3,10 @@ Docker image of terraform
 
 ## Supported tags and respective Dockerfile links
 
-- `0.11.13-gitlab-runner-digitalocean`, `latest` [(0.11.13-gitlab-runner-digitalocean/Dockerfile)](https://github.com/mvochoa/terraform/blob/master/0.11.13-gitlab-runner-digitalocean/Dockerfile)
+- `0.12.16`, `latest` [(0.12.16/Dockerfile)](0.12.16/Dockerfile)
+- `0.12.1` [(0.12.1/Dockerfile)](0.12.1/Dockerfile)
+- `0.11.13` [(0.11.13/Dockerfile)](0.11.13/Dockerfile)
+- `0.11.13-gitlab-runner-digitalocean` [(0.11.13-gitlab-runner-digitalocean/Dockerfile)](0.11.13-gitlab-runner-digitalocean/Dockerfile)
 
 ## Gitlab runner digitalocean
 Create a droplet in DigitalOcean with gitlab-runner. The droplet for default has the following characteristics:
