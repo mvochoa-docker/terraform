@@ -1,5 +1,5 @@
 .docker:
-  image: docker
+  image: docker:stable
   services:
     - docker:stable-dind
   variables:
