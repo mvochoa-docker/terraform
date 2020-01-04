@@ -4,38 +4,30 @@
     - docker:stable-dind
   variables:
     DOCKER_HOST: docker:2375
+  script:
+    - docker build -t $CI_JOB_NAME .
+    - docker login -u $CI_DOCKER_GITLAB_USER -p $CI_DOCKER_GITLAB_PASSWORD $CI_REGISTRY
+    - docker tag $CI_JOB_NAME registry.gitlab.com/mvochoa-docker/$CI_JOB_NAME
+    - docker push registry.gitlab.com/mvochoa-docker/$CI_JOB_NAME
+    - docker login -u $CI_DOCKER_USER -p $CI_DOCKER_PASSWORD
+    - docker tag $CI_JOB_NAME mvochoa/$CI_JOB_NAME
+    - docker push mvochoa/$CI_JOB_NAME
   tags:
     - docker
 
 terraform:latest:
   extends: .docker
   before_script:
-    - cd 0.12.16/
-    - docker build -t $CI_JOB_NAME .
-  script:
-    - docker login -u $CI_DOCKER_GITLAB_USER -p $CI_DOCKER_GITLAB_PASSWORD $CI_REGISTRY
-    - docker tag $CI_JOB_NAME registry.gitlab.com/mvochoa-docker/$CI_JOB_NAME
-    - docker push registry.gitlab.com/mvochoa-docker/$CI_JOB_NAME
-    - docker login -u $CI_DOCKER_USER -p $CI_DOCKER_PASSWORD
-    - docker tag $CI_JOB_NAME mvochoa/$CI_JOB_NAME
-    - docker push mvochoa/$CI_JOB_NAME
+    - cd 0.12.18/
   only:
     changes:
-      - 0.12.16/*
-      - 0.12.16/**/*
+      - 0.12.18/*
+      - 0.12.18/**/*
 
 terraform:0.11.13:
   extends: .docker
   before_script:
     - cd 0.11.13/
-    - docker build -t $CI_JOB_NAME .
-  script:
-    - docker login -u $CI_DOCKER_GITLAB_USER -p $CI_DOCKER_GITLAB_PASSWORD $CI_REGISTRY
-    - docker tag $CI_JOB_NAME registry.gitlab.com/mvochoa-docker/$CI_JOB_NAME
-    - docker push registry.gitlab.com/mvochoa-docker/$CI_JOB_NAME
-    - docker login -u $CI_DOCKER_USER -p $CI_DOCKER_PASSWORD
-    - docker tag $CI_JOB_NAME mvochoa/$CI_JOB_NAME
-    - docker push mvochoa/$CI_JOB_NAME
   only:
     changes:
       - 0.11.13/*
@@ -45,14 +37,6 @@ terraform:0.11.13-gitlab-runner-digitalocean:
   extends: .docker
   before_script:
     - cd 0.11.13-gitlab-runner-digitalocean/
-    - docker build -t $CI_JOB_NAME .
-  script:
-    - docker login -u $CI_DOCKER_GITLAB_USER -p $CI_DOCKER_GITLAB_PASSWORD $CI_REGISTRY
-    - docker tag $CI_JOB_NAME registry.gitlab.com/mvochoa-docker/$CI_JOB_NAME
-    - docker push registry.gitlab.com/mvochoa-docker/$CI_JOB_NAME
-    - docker login -u $CI_DOCKER_USER -p $CI_DOCKER_PASSWORD
-    - docker tag $CI_JOB_NAME mvochoa/$CI_JOB_NAME
-    - docker push mvochoa/$CI_JOB_NAME
   only:
     changes:
       - 0.11.13-gitlab-runner-digitalocean/*
@@ -62,14 +46,6 @@ terraform:0.12.1:
   extends: .docker
   before_script:
     - cd 0.12.1/
-    - docker build -t $CI_JOB_NAME .
-  script:
-    - docker login -u $CI_DOCKER_GITLAB_USER -p $CI_DOCKER_GITLAB_PASSWORD $CI_REGISTRY
-    - docker tag $CI_JOB_NAME registry.gitlab.com/mvochoa-docker/$CI_JOB_NAME
-    - docker push registry.gitlab.com/mvochoa-docker/$CI_JOB_NAME
-    - docker login -u $CI_DOCKER_USER -p $CI_DOCKER_PASSWORD
-    - docker tag $CI_JOB_NAME mvochoa/$CI_JOB_NAME
-    - docker push mvochoa/$CI_JOB_NAME
   only:
     changes:
       - 0.12.1/*
@@ -79,15 +55,16 @@ terraform:0.12.16:
   extends: .docker
   before_script:
     - cd 0.12.16/
-    - docker build -t $CI_JOB_NAME .
-  script:
-    - docker login -u $CI_DOCKER_GITLAB_USER -p $CI_DOCKER_GITLAB_PASSWORD $CI_REGISTRY
-    - docker tag $CI_JOB_NAME registry.gitlab.com/mvochoa-docker/$CI_JOB_NAME
-    - docker push registry.gitlab.com/mvochoa-docker/$CI_JOB_NAME
-    - docker login -u $CI_DOCKER_USER -p $CI_DOCKER_PASSWORD
-    - docker tag $CI_JOB_NAME mvochoa/$CI_JOB_NAME
-    - docker push mvochoa/$CI_JOB_NAME
   only:
     changes:
       - 0.12.16/*
       - 0.12.16/**/*
+
+terraform:0.12.18:
+  extends: .docker
+  before_script:
+    - cd 0.12.18/
+  only:
+    changes:
+      - 0.12.18/*
+      - 0.12.18/**/*

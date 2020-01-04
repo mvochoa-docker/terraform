@@ -1,18 +1,21 @@
 # Terraform
+
 Docker image of terraform [https://hub.docker.com/repository/docker/mvochoa/terraform/general](https://hub.docker.com/repository/docker/mvochoa/terraform/general)
 
 ## Supported tags and respective Dockerfile links
 
-- `0.12.16`, `latest` [(0.12.16/Dockerfile)](0.12.16/Dockerfile)
+- `0.12.18`, `latest` [(0.12.18/Dockerfile)](0.12.18/Dockerfile)
+- `0.12.16` [(0.12.16/Dockerfile)](0.12.16/Dockerfile)
 - `0.12.1` [(0.12.1/Dockerfile)](0.12.1/Dockerfile)
 - `0.11.13` [(0.11.13/Dockerfile)](0.11.13/Dockerfile)
 - `0.11.13-gitlab-runner-digitalocean` [(0.11.13-gitlab-runner-digitalocean/Dockerfile)](0.11.13-gitlab-runner-digitalocean/Dockerfile)
 
 ## Gitlab runner digitalocean
+
 Create a droplet in DigitalOcean with gitlab-runner. The droplet for default has the following characteristics:
 
 - **Image:** docker-18-04
-- **Name:** $NAME_DROPLET
+- **Name:** \$NAME_DROPLET
 - **Region:** sfo2
 - **Size:** s-1vcpu-3gb
 - **User Data:** user_data.yml
