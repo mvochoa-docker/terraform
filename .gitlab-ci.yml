@@ -20,6 +20,8 @@ terraform:latest:
   before_script:
     - cd 0.12.18/
   only:
+    refs:
+      - master
     changes:
       - 0.12.18/*
       - 0.12.18/**/*
@@ -29,6 +31,8 @@ terraform:0.11.13:
   before_script:
     - cd 0.11.13/
   only:
+    refs:
+      - master
     changes:
       - 0.11.13/*
       - 0.11.13/**/*
@@ -38,6 +42,8 @@ terraform:0.11.13-gitlab-runner-digitalocean:
   before_script:
     - cd 0.11.13-gitlab-runner-digitalocean/
   only:
+    refs:
+      - master
     changes:
       - 0.11.13-gitlab-runner-digitalocean/*
       - 0.11.13-gitlab-runner-digitalocean/**/*
@@ -47,6 +53,8 @@ terraform:0.12.1:
   before_script:
     - cd 0.12.1/
   only:
+    refs:
+      - master
     changes:
       - 0.12.1/*
       - 0.12.1/**/*
@@ -56,6 +64,8 @@ terraform:0.12.16:
   before_script:
     - cd 0.12.16/
   only:
+    refs:
+      - master
     changes:
       - 0.12.16/*
       - 0.12.16/**/*
@@ -65,6 +75,8 @@ terraform:0.12.18:
   before_script:
     - cd 0.12.18/
   only:
+    refs:
+      - master
     changes:
       - 0.12.18/*
       - 0.12.18/**/*
