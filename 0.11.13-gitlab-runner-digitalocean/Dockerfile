@@ -13,7 +13,7 @@ RUN git clone https://github.com/hashicorp/terraform.git ./ && \
     /bin/bash scripts/build.sh
 
 FROM alpine:3.8
-MAINTAINER mario@mvochoa.com
+LABEL maintainer="mario@mvochoa.com"
 
 ENV GITLAB_RUNNER_URL=https://gitlab.com/
 ENV GITLAB_RUNNER_TAGS=runner

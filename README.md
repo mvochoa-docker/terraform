@@ -1,6 +1,6 @@
 # Terraform
 
-Docker image of terraform [https://hub.docker.com/repository/docker/mvochoa/terraform/general](https://hub.docker.com/repository/docker/mvochoa/terraform/general)
+Docker images with terraform
 
 ## Supported tags and respective Dockerfile links
 
