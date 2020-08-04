@@ -1,6 +1,6 @@
 FROM golang:alpine AS builder
 
-ENV TERRAFORM_VERSION=0.12.18
+ENV TERRAFORM_VERSION=0.12.29
 
 RUN apk add --update git bash openssh
 

@@ -21,13 +21,13 @@
 terraform:latest:
   extends: .docker
   before_script:
-    - cd 0.12.18/
+    - cd 0.12.29/
   only:
     refs:
       - master
     changes:
-      - 0.12.18/*
-      - 0.12.18/**/*
+      - 0.12.29/*
+      - 0.12.29/**/*
 
 terraform:0.11.13:
   extends: .docker
@@ -83,3 +83,14 @@ terraform:0.12.18:
     changes:
       - 0.12.18/*
       - 0.12.18/**/*
+
+terraform:0.12.29:
+  extends: .docker
+  before_script:
+    - cd 0.12.29/
+  only:
+    refs:
+      - master
+    changes:
+      - 0.12.29/*
+      - 0.12.29/**/*
