@@ -4,7 +4,8 @@ Docker images with terraform
 
 ## Supported tags and respective Dockerfile links
 
-- `0.12.29`, `latest` [(0.12.29/Dockerfile)](0.12.29/Dockerfile)
+- `0.13.5`, `latest` [(0.13.5/Dockerfile)](0.13.5/Dockerfile)
+- `0.12.29` [(0.12.29/Dockerfile)](0.12.29/Dockerfile)
 - `0.12.18` [(0.12.18/Dockerfile)](0.12.18/Dockerfile)
 - `0.12.16` [(0.12.16/Dockerfile)](0.12.16/Dockerfile)
 - `0.12.1` [(0.12.1/Dockerfile)](0.12.1/Dockerfile)

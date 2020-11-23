@@ -5,6 +5,7 @@
   variables:
     DOCKER_HOST: docker:2375
   script:
+    - export REPO=$(echo $CI_JOB_NAME | sed 's/:.*/\1/')
     - docker build -t $CI_JOB_NAME .
     - docker login -u $CI_DOCKER_GITLAB_USER -p $CI_DOCKER_GITLAB_PASSWORD $CI_REGISTRY
     - docker tag $CI_JOB_NAME registry.gitlab.com/mvochoa-docker/$CI_JOB_NAME
@@ -12,6 +13,7 @@
     - docker login -u $CI_DOCKER_USER -p $CI_DOCKER_PASSWORD
     - docker tag $CI_JOB_NAME mvochoa/$CI_JOB_NAME
     - docker push mvochoa/$CI_JOB_NAME
+    - while [ $# -gt 0 ]; do docker tag $CI_JOB_NAME mvochoa/$REPO:$1; docker push mvochoa/$REPO:$1; shift; done;
   after_script:
     - apk add --update curl jq bash
     - ./description.sh mvochoa/$(echo $CI_JOB_NAME | sed 's/:.*/\1/')
@@ -21,6 +23,28 @@
 terraform:latest:
   extends: .docker
   before_script:
+    - cd 0.13.5/
+  only:
+    refs:
+      - master
+    changes:
+      - 0.13.5/*
+      - 0.13.5/**/*
+
+terraform:0.13.5:
+  extends: .docker
+  before_script:
+    - cd 0.13.5/
+  only:
+    refs:
+      - master
+    changes:
+      - 0.13.5/*
+      - 0.13.5/**/*
+
+terraform:0.12.29:
+  extends: .docker
+  before_script:
     - cd 0.12.29/
   only:
     refs:
@@ -28,50 +52,6 @@ terraform:latest:
     changes:
       - 0.12.29/*
       - 0.12.29/**/*
-
-terraform:0.11.13:
-  extends: .docker
-  before_script:
-    - cd 0.11.13/
-  only:
-    refs:
-      - master
-    changes:
-      - 0.11.13/*
-      - 0.11.13/**/*
-
-terraform:0.11.13-gitlab-runner-digitalocean:
-  extends: .docker
-  before_script:
-    - cd 0.11.13-gitlab-runner-digitalocean/
-  only:
-    refs:
-      - master
-    changes:
-      - 0.11.13-gitlab-runner-digitalocean/*
-      - 0.11.13-gitlab-runner-digitalocean/**/*
-
-terraform:0.12.1:
-  extends: .docker
-  before_script:
-    - cd 0.12.1/
-  only:
-    refs:
-      - master
-    changes:
-      - 0.12.1/*
-      - 0.12.1/**/*
-
-terraform:0.12.16:
-  extends: .docker
-  before_script:
-    - cd 0.12.16/
-  only:
-    refs:
-      - master
-    changes:
-      - 0.12.16/*
-      - 0.12.16/**/*
 
 terraform:0.12.18:
   extends: .docker
@@ -84,13 +64,47 @@ terraform:0.12.18:
       - 0.12.18/*
       - 0.12.18/**/*
 
-terraform:0.12.29:
+terraform:0.12.16:
   extends: .docker
   before_script:
-    - cd 0.12.29/
+    - cd 0.12.16/
   only:
     refs:
       - master
     changes:
-      - 0.12.29/*
-      - 0.12.29/**/*
+      - 0.12.16/*
+      - 0.12.16/**/*
+
+terraform:0.12.1:
+  extends: .docker
+  before_script:
+    - cd 0.12.1/
+  only:
+    refs:
+      - master
+    changes:
+      - 0.12.1/*
+      - 0.12.1/**/*
+
+terraform:0.11.13-gitlab-runner-digitalocean:
+  extends: .docker
+  before_script:
+    - cd 0.11.13-gitlab-runner-digitalocean/
+  only:
+    refs:
+      - master
+    changes:
+      - 0.11.13-gitlab-runner-digitalocean/*
+      - 0.11.13-gitlab-runner-digitalocean/**/*
+
+terraform:0.11.13:
+  extends: .docker
+  before_script:
+    - cd 0.11.13/
+  only:
+    refs:
+      - master
+    changes:
+      - 0.11.13/*
+      - 0.11.13/**/*
+
