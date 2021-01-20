@@ -23,13 +23,24 @@
 terraform:latest:
   extends: .docker
   before_script:
-    - cd 0.13.5/
+    - cd 0.14.4/
   only:
     refs:
       - master
     changes:
-      - 0.13.5/*
-      - 0.13.5/**/*
+      - 0.14.4/*
+      - 0.14.4/**/*
+
+terraform:0.14.4:
+  extends: .docker
+  before_script:
+    - cd 0.14.4/
+  only:
+    refs:
+      - master
+    changes:
+      - 0.14.4/*
+      - 0.14.4/**/*
 
 terraform:0.13.5:
   extends: .docker
